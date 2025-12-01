@@ -11,18 +11,18 @@ package praktikum11tugas;
 import java.util.ArrayList;
 import java.util.List;
 
-class Pengarang {
-    private String namaPengarang;
 
-    public Pengarang(String namaPengarang) {
-        this.namaPengarang = namaPengarang;
+class Pengarang {
+    private String nama;
+
+    public Pengarang(String nama) {
+        this.nama = nama;
     }
 
     public void infoPengarang() {
-        System.out.println("Pengarang: " + namaPengarang);
+        System.out.println("Pengarang: " + nama);
     }
 }
-
 
 class Buku {
     private String judul;
@@ -35,9 +35,7 @@ class Buku {
 
     public void infoBuku() {
         System.out.println("\nJudul Buku : " + judul);
-        if (pengarang != null) {
-            pengarang.infoPengarang();
-        }
+        pengarang.infoPengarang();
     }
 }
 
@@ -49,12 +47,13 @@ class Perpustakaan {
         daftarBuku = new ArrayList<>();
     }
 
-    public void tambahBuku(Buku buku) {
-        daftarBuku.add(buku);
+    public void tambahBuku(String judul, Pengarang pengarang) {
+        Buku bukuBaru = new Buku(judul, pengarang); 
+        daftarBuku.add(bukuBaru);
     }
 
     public void infoPerpustakaan() {
-        System.out.println("===== Daftar Buku di Perpustakaan =====");
+        System.out.println("\nDaftar Buku di Perpustakaan:");
         for (Buku buku : daftarBuku) {
             buku.infoBuku();
         }
@@ -64,18 +63,15 @@ class Perpustakaan {
 
 public class MainTugas {
     public static void main(String[] args) {
+
         Perpustakaan perpus = new Perpustakaan();
-                
+
         Pengarang p1 = new Pengarang("Tere Liye");
         Pengarang p2 = new Pengarang("Andrea Hirata");
 
-        Buku b1 = new Buku("Matahari Minor", p1);
-        Buku b2 = new Buku("Laskar Pelangi", p2);
-
-        perpus.tambahBuku(b1);
-        perpus.tambahBuku(b2);
+        perpus.tambahBuku("Bumi", p1);
+        perpus.tambahBuku("Laskar Pelangi", p2);
 
         perpus.infoPerpustakaan();
     }
 }
-
