@@ -30,8 +30,8 @@ class Perpustakaan {
         this.bukuList = new ArrayList<>();
     }
     
-    public void tambahBuku(Buku buku) {
-        bukuList.add(buku);
+    public void tambahBuku(String judul) {
+        bukuList.add(new Buku(judul));
     }
     
     public void infoPerpustakaan() {
@@ -46,13 +46,9 @@ public class MainBuku {
 
         Perpustakaan perpustakaan = new Perpustakaan();
 
-        Buku buku1 = new Buku("Bumi");
-        Buku buku2 = new Buku("Bulan");
-        Buku buku3 = new Buku("Matahari");
-
-        perpustakaan.tambahBuku(buku1);
-        perpustakaan.tambahBuku(buku2);
-        perpustakaan.tambahBuku(buku3);
+        perpustakaan.tambahBuku("Bumi");
+        perpustakaan.tambahBuku("Bulan");
+        perpustakaan.tambahBuku("Matahari");
 
         System.out.println("Daftar Buku di Perpustakaan:");
         perpustakaan.infoPerpustakaan();
